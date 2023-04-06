@@ -36,13 +36,18 @@ while count < 6:
         print("You have {} tries left".format(count_balance))
         print("Used letters: {}".format(" ".join(used_letters)))
         print("Word: {}".format("_ ".join(word)))
-        guess = str(input("Guess a letter: "))
-        
-        # start to count every loop
-        count += 1
+        guess = input("Guess a letter: ")  
 
-        # We start to minus 1 each count balance
-        count_balance = count_balance - 1
+        # Limit guess letter only one char
+        if len(guess) > 1:
+            print("Only one char is allowed!")
+            continue
+
+        if guess not in letters:
+            # start to count every loop
+            count += 1
+            # We start to minus 1 each count balance
+            count_balance -= 1
 
         # Check index of letters
         for i in range(len(letters)):
@@ -52,7 +57,7 @@ while count < 6:
 
                 guessed_word[i] = letters[i]
                 word[i] = letters[i]
-
+            
         if guessed_word == letters:
             print("You guessed the word {} !".format("".join(guessed_word)))
             break
