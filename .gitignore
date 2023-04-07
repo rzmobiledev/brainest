@@ -1,3 +1,9 @@
 .venv
 .env
 .python-version
+
+# excluded files
+greetings.py
+pay.py
+score.py
+test.py
