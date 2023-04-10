@@ -41,19 +41,65 @@
 #     print("You didn't guess the word :/")
 #     print("It was:", word)
 
+import json
+from json import JSONEncoder
 
-def get_largest_int(data: list[int, str]):
-    try:
-        for i in data:
-            if not isinstance(data, int):
-                data.remove(i)
-                
-        sorted_list = sorted(data)
-        return sorted_list[-1]
-    
-    except Exception as e:
-        return str(e)
+data = dict(name="Rizal Safril", age=39, wife="Iva Izazaya", marry=True, kids=["Nasywah Azkia", "Keyra Almira"])
+new_data = json.dumps(data)
 
 
-data = [20, 10, 15, 40, 45, 60, "something", "error"]
-print(get_largest_int(data))
+class Profile:
+
+    def __init__(self, name: str, age: int, wife: str, kids: list[str], marry: bool):
+        self.name = name
+        self.age = age
+        self.wife = wife
+        self.kids = kids
+        self.marry = marry
+
+
+class Occupation:
+
+    def __init__(self, name: str, age: int, position: str, condition: bool):
+        self.name = name
+        self.age = age
+        self.position = position
+        self.condition = condition
+
+
+class UserEncoder(JSONEncoder):
+
+    def default(self, o):
+        if isinstance(o, Profile):
+            return {
+                "name": o.name,
+                "age": o.age,
+                "wife": o.wife,
+                "kids": o.kids,
+                "marry": o.marry,
+                o.__class__.__name__: True
+            }
+        
+        elif isinstance(o, Occupation):
+            return {
+                "name": o.name,
+                "age": o.age,
+                "position": o.position,
+                "condition": o.condition,
+            }
+
+        return JSONEncoder.default(self, o)
+
+
+profile = Profile(name="Rizal Safril", age=39, wife="Iva Izazaya", kids=["Nasywah Azkia", "Keyra Almira"], marry=True)
+occupation = Occupation(name="Rizal Safril", age=39, position="Backend Engineer", condition=True)
+
+cv = json.dumps(profile, cls=UserEncoder, indent=2) # convert to json
+cd = json.dumps(occupation, cls=UserEncoder)
+print(cv)
+print(json.loads(cd))
+
+
+# with open("file.json", "r") as file:
+#     data = json.load(file)
+#     print(json.dumps(data, indent=4))
