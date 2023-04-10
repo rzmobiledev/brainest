@@ -1,3 +1,4 @@
+import random
 '''
 The hangman game is a word guessing game where the player is given a word and has to guess the letters that make up the word. 
 The player is given a certain number of tries (no more than 6 wrong guesses are allowed) to guess the correct letters before the game is over.
@@ -21,7 +22,6 @@ Word: j a _ a
 Guess a letter: v                                                                                                                                                
 You guessed the word java !
 '''
-import random
 
 count = 0
 count_balance = 6
@@ -36,6 +36,7 @@ def word_clue() -> str:
     wd[0] = letter[0]
     wd[-1] = letter[-1]
     return wd
+
 
 def append_word(guess: str) -> None:
     for i in range(len(letter)):
