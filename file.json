@@ -1,0 +1,11 @@
+{
+    "name": "Rizal Safril",
+    "age": 39,
+    "wife": "Iva Izazaya",
+    "kids": [
+        "Nasywah Azkia",
+        "Keyra Almira"
+    ],
+    "marry": true,
+    "Profile": true
+}
