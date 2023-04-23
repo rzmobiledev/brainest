@@ -1,105 +1,127 @@
-# from random import randint
-
-# WORDS = ["tree", "car", "lordoftherings", "godzilla", "disestablishmentarianism", "kapow", "java", "foobar"]
-
-# def get_indices(letter: str, word: str):
-#     indices = []
-#     for i in range(len(word)):
-#         if word[i] == letter:
-#             indices.append(i)
-#     return indices
+"""
+Create a Dog class with the following attributes: name, breed, and age. The class should also have the following methods: bark() and info().
+"""
 
 
-# word = WORDS[randint(0, len(WORDS))]
+# class Dog:
 
-# guess = ["_"] * len(word)
+#     def __init__(self, name, breed, age):
+#         self.name = name
+#         self.breed = breed
+#         self.age = age
 
-# tries_left = 6
-# used_letters = set()
+#     def bark(self):
+#         print("{} is barking".format(self.name))
+
+#     def info(self):
+#         print("Dog name is: {}, age: {}, breed: {}".format(self.name, self.age, self.breed))
+
+
+# dog = Dog("Gukguk", "afternoon", 5)
+
+# dog.bark()
+# dog.info()
+
+
+"""
+Create a BankAccount class with the following attributes: balance and account_number.
+The class should also have the following methods: deposit(amount), withdraw(amount), and info().
+"""
+
+
+# class BankAccount:
+
+#     def __init__(self, balance, account_number):
+#         self.balance = balance
+#         self.account_number = account_number
+
+#     def deposit(self, amount=0):
+#         self.balance = self.balance + amount
+#         self.deposit = amount
+
+#     def withdraw(self, amount=0):
+#         self.amount = self.balance - amount
+#         self.withdraw = amount
     
-# while tries_left > 0:
-#     print("You have", tries_left, "tries left.")
-#     print("Used letters:", " ".join(used_letters))
-#     print("Word:", " ".join(guess))
-#     print()
+#     def info(self):
+#         print("Your Account info:")
+#         print("-------------------")
+#         print("Account Number: {}".format(self.account_number))
+#         print("Deposit: {}".format(self.deposit))
+#         print("Withdraw: {}".format(self.withdraw))
+#         print("Balance: {}".format(self.balance))
+
+
+# bank = BankAccount(500, 7896541)
+# bank.deposit(50)
+# bank.withdraw(20)
+# bank.info()
+
+
+"""
+Create a Vehicle class with the following attributes: 
+make, model, and year. The class should also have the following methods: start(), stop(), and info().
+
+Create a Car class that inherits from the Vehicle class. 
+The Car class should have an additional attribute: num_doors. 
+The class should also have the following method: lock_doors().
+"""
+
+
+# class Vehicle:
+
+#     def __init__(self, make, model, year):
+#         self.make = make
+#         self.model = model
+#         self.year = year
+
+#     def start():
+#         print("The car is starting")
+
+#     def stop():
+#         print("The car is stoping")
+
     
-#     user_letter = input("Guess a letter: ")
-#     used_letters.add(user_letter)
-#     guessed = get_indices(user_letter, word)
-#     if not guessed:
-#         tries_left -= 1
-#         continue
-        
-#     for i in guessed:
-#         guess[i] = user_letter
-    
-#     if "".join(guess) == word:
-#         print("You guessed the word " + word + "!")
-#         break
-        
-# if "".join(guess) != word:
-#     print("You didn't guess the word :/")
-#     print("It was:", word)
 
-import json
-from json import JSONEncoder
+# class Car(Vehicle):
 
-data = dict(name="Rizal Safril", age=39, wife="Iva Izazaya", marry=True, kids=["Nasywah Azkia", "Keyra Almira"])
-new_data = json.dumps(data)
+#     def __init__(self, num_doors):
+#         Vehicle.__init__(self, num_doors)
+#         self.num_doors = num_doors
 
+"""
+1.Write a lambda function that takes two lists of integers and returns a new list with the maximum value for each index of the two lists.
+For example, given [1, 3, 5] and [2, 4, 6], the function should return [2, 4, 6].
+"""
 
-class Profile:
+# list1 = [1, 3, 5]
+# list2 = [2, 4, 6]
+# result = list(map(lambda x, y: max(x, y), list1, list2))
+# print(result)
 
-    def __init__(self, name: str, age: int, wife: str, kids: list[str], marry: bool):
-        self.name = name
-        self.age = age
-        self.wife = wife
-        self.kids = kids
-        self.marry = marry
+"""
+2. Write a lambda function that takes a string of words separated by spaces,
+and returns a new string with the words in reverse order. For example,
+given the string "the quick brown fox", the function should return "fox brown quick the".
+"""
+# s = "the quick brown fox"
+# result = " ".join(reversed(s.split()))
+# print(result)
 
+Lorem ipsum dolor sit amet,
 
-class Occupation:
+consectetur adipiscing elit,
 
-    def __init__(self, name: str, age: int, position: str, condition: bool):
-        self.name = name
-        self.age = age
-        self.position = position
-        self.condition = condition
+sed do eiusmod tempor incididunt ut
 
+labore et dolore magna aliqua. Ut enim ad minim veniam,
 
-class UserEncoder(JSONEncoder):
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
 
-    def default(self, o):
-        if isinstance(o, Profile):
-            return {
-                "name": o.name,
-                "age": o.age,
-                "wife": o.wife,
-                "kids": o.kids,
-                "marry": o.marry,
-                o.__class__.__name__: True
-            }
-        
-        elif isinstance(o, Occupation):
-            return {
-                "name": o.name,
-                "age": o.age,
-                "position": o.position,
-                "condition": o.condition,
-            }
+commodo consequat. Duis aute irure dolor in reprehenderit in
 
-        return JSONEncoder.default(self, o)
+voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
+Excepteur sint occaecat cupidatat non proident,
 
-profile = Profile(name="Rizal Safril", age=39, wife="Iva Izazaya", kids=["Nasywah Azkia", "Keyra Almira"], marry=True)
-occupation = Occupation(name="Rizal Safril", age=39, position="Backend Engineer", condition=True)
-
-cv = json.dumps(profile, cls=UserEncoder, indent=2) # convert to json
-cd = json.dumps(occupation, cls=UserEncoder)
-print(cv)
-print(json.loads(cd))
-
-
-# with open("file.json", "r") as file:
-#     data = json.load(file)
-#     print(json.dumps(data, indent=4))
+sunt in culpa qui officia deserunt mollit anim id est laborum.
