@@ -108,20 +108,9 @@ given the string "the quick brown fox", the function should return "fox brown qu
 # result = " ".join(reversed(s.split()))
 # print(result)
 
-Lorem ipsum dolor sit amet,
+from collections import Counter
 
-consectetur adipiscing elit,
+all_nums = (10, 20, 10, 30, 40, 40, 30, 20, 5, 6)
 
-sed do eiusmod tempor incididunt ut
-
-labore et dolore magna aliqua. Ut enim ad minim veniam,
-
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-
-commodo consequat. Duis aute irure dolor in reprehenderit in
-
-voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-Excepteur sint occaecat cupidatat non proident,
-
-sunt in culpa qui officia deserunt mollit anim id est laborum.
+find_unique = tuple(x for x, y in Counter(all_nums).items() if y > 1)
+print(find_unique)
