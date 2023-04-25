@@ -110,7 +110,10 @@ given the string "the quick brown fox", the function should return "fox brown qu
 
 from collections import Counter
 
-all_nums = (10, 20, 10, 30, 40, 40, 30, 20, 5, 6)
+ts = [(702,703), (703,704), (803,805), (803,806), (901,903), (902,903)]
 
-find_unique = tuple(x for x, y in Counter(all_nums).items() if y > 1)
-print(find_unique)
+o = [i for sublist in ts for i in sublist]
+
+a = tuple(map(lambda x: x, [k for k, v in Counter(o).items() if v > 1]))
+
+print(a)
